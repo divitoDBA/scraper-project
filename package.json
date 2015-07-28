@@ -1,0 +1,13 @@
+{
+  "name": "scraper-project",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "scraper project",
+  "main": "scraper.js",
+  "dependencies": {
+    "async": "^1.4.0",
+    "cheerio": "^0.19.0",
+    "mongoose": "^4.1.0",
+    "request": "^2.60.0"
+  }
+}
