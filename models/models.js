@@ -16,7 +16,6 @@ var articleSchema = mongoose.Schema({
   available: Boolean,
   last_scraped : Date,
   last_scraped_status : Boolean,
-  html: String,
   primary_tag: String,
   title: String,
   head : String,
@@ -24,9 +23,26 @@ var articleSchema = mongoose.Schema({
   pubDate: Date
 });
 
+var dataSchema = mongoose.Schema({
+  article_url: [{type: mongoose.Schema.Types.ObjectId, ref: 'articles'}],
+  article_text: String,
+  article_html: String,
+  article_tags: String 
+}) ; 
+
+var runLogSchema = mongoose.Schema({
+  domain:       { type: String, required: true, index: true },
+  site_url:     { type: String, required: true, index: true },
+  run_status:   Boolean,
+  run_date:     Date 
+}) ; 
+
+
 var models = {
       sites : mongoose.model('sites', siteSchema),
       articles : mongoose.model('articles', articleSchema),
+      data : mongoose.model('data', dataSchema),
+      runlog : mongoose.model('runlog', runLogSchema),
     };
     return models;
 }
